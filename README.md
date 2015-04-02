@@ -8,7 +8,7 @@ There are two kinds of variables: global and provider.
 
 ### Global Variables
 `CLOUD_PROVIDER_NAME` - name of cloud provider you want to use
-  * Digital Ocean - `digital_ocean`
+  - Digital Ocean - `digital_ocean`
 
 `USER_DATA` - directory that contains user data files
 
@@ -16,5 +16,5 @@ There are two kinds of variables: global and provider.
 ## Providers
 
 ### Digital Ocean
-  #### Provider Variables
-  * `DIGITAL_OCEAN_ACCESS_TOKEN` 
+  - Provider Variables
+    - `DIGITAL_OCEAN_ACCESS_TOKEN` - access token provided by digital ocean
