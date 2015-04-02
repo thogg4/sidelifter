@@ -31,10 +31,11 @@ module Sidelifter
 
       say 'Creating Server...'
       droplet = DropletKit::Droplet.new(name: chosen_name, region: chosen_region.slug, image: chosen_image.slug, size: chosen_size, user_data: chosen_user_data[:contents])
-      if c.droplets.create(droplet)
+      begin
+        c.droplets.create(droplet)
         say 'Server Created'
-      else
-        say 'Server Not Created'
+      rescue => e
+        say "Server Not Created: #{e}"
       end
     end
 
