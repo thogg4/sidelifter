@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'sidelifter'
+
+cloud_provider_name = ENV['CLOUD_PROVIDER_NAME']
+raise 'ENV variable not set: CLOUD_PROVIDER_NAME' unless cloud_provider_name
+
+case cloud_provider_name
+when 'openstack'
+when 'digital_ocean'
+  Sidelifter::DigitalOcean.start(ARGV)
+else
+  raise 'CLOUD_PROVIDER not recognized'
+end
