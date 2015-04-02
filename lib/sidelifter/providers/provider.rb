@@ -1,4 +1,5 @@
 class Provider < Thor
+  include Sidelifter::Output
 
   no_commands do
 
@@ -52,8 +53,8 @@ class Provider < Thor
     end
   end
 
-  def method_missing(method)
-    puts "#{method} is not a supported command"
+  def method_missing(method_name, *args, &block)
+    puts "#{method_name} is not a supported command"
   end
 
 end

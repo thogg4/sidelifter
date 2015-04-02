@@ -29,13 +29,20 @@ module Sidelifter
         end
       end
 
-      say 'Creating Server...'
-      droplet = DropletKit::Droplet.new(name: chosen_name, region: chosen_region.slug, image: chosen_image.slug, size: chosen_size, user_data: chosen_user_data[:contents])
+      droplet = DropletKit::Droplet.new({
+        name: chosen_name,
+        region: chosen_region.slug,
+        image: chosen_image.slug,
+        size: chosen_size,
+        user_data: chosen_user_data[:contents]
+      })
+
       begin
+        shout 'Creating Server'
         c.droplets.create(droplet)
-        say 'Server Created'
+        shout 'Server Created'
       rescue => e
-        say "Server Not Created: #{e}"
+        shout "Server Not Created: #{e}"
       end
     end
 
@@ -46,9 +53,6 @@ module Sidelifter
       raise 'ENV variable not set: DIGITAL_OCEAN_ACCESS_TOKEN' unless access_token
 
       DropletKit::Client.new(access_token: access_token)
-    end
-
-    def deploy_server
     end
 
   end
